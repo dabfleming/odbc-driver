@@ -1,10 +1,10 @@
 <?php namespace Ccovey\ODBCDriver;
 
-use Illuminate\Database\Connection;
+use Illuminate\Database\SqlServerConnection;
 use Illuminate\Database\Query\Grammars\Grammar as QueryGrammar;
 use Illuminate\Database\Schema\Grammars\Grammar as SchemaGrammar;
 
-class ODBCDriverConnection extends Connection
+class ODBCDriverConnection extends SqlServerConnection
 {
 	/**
 	 * @return Query\Grammars\Grammar
@@ -25,7 +25,7 @@ class ODBCDriverConnection extends Connection
 			}
 		}
 
-		return $this->withTablePrefix(new QueryGrammar);
+		return $this->withTablePrefix(new QueryGrammar); // TODO Cannot instantiate abstract class
 	}
 
 	/**
@@ -34,7 +34,14 @@ class ODBCDriverConnection extends Connection
 	 */
 	protected function getDefaultSchemaGrammar()
 	{
-		return $this->withTablePrefix(new SchemaGrammar);
+		$grammarConfig = $this->getGrammarConfig();
+
+		$illuminateGrammar = "Illuminate\\Database\\Schema\\Grammars\\" . $grammarConfig;
+		if (class_exists($illuminateGrammar)) {
+			return $this->withTablePrefix(new $illuminateGrammar);
+		}
+
+		return $this->withTablePrefix(new SchemaGrammar); // TODO Cannot instantiate abstract class
 	}
 
 	/**
