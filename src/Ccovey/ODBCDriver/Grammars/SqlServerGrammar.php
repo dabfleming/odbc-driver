@@ -1,8 +1,8 @@
 <?php namespace Ccovey\ODBCDriver\Grammars;
 
-use Illuminate\Database\Query\Grammars\SqlServerGrammar;
+use Illuminate\Database\Query\Grammars\SqlServerGrammar AS IlluminateSqlServerGrammar;
 
-class SqlServerODBCGrammar extends SqlServerGrammar {
+class SqlServerGrammar extends IlluminateSqlServerGrammar {
 	/**
 	 * Get the format for database stored dates.
 	 *
