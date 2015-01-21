@@ -70,12 +70,12 @@ class ODBCDriverConnection extends SqlServerConnection
 
 	protected function getGrammarConfig()
 	{
-		if ($this->getConfig('grammar')) {
-			return $this->getConfig('grammar');
-		}
-
 		if ($this->getConfig('type')) {
 			return $this->getConfig('type') . 'Grammar';
+		}
+
+		if ($this->getConfig('grammar')) {
+			return $this->getConfig('grammar');
 		}
 
 		return false;
@@ -83,10 +83,6 @@ class ODBCDriverConnection extends SqlServerConnection
 
 	protected function getProcessorConfig()
 	{
-		if ($this->getConfig('processor')) {
-			return $this->getConfig('processor') . 'Processor';
-		}
-
 		if ($this->getConfig('type')) {
 			return $this->getConfig('type') . 'Processor';
 		}
