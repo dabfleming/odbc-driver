@@ -2,7 +2,7 @@
 
 use Illuminate\Database\SqlServerConnection;
 use Illuminate\Database\Query\Grammars\Grammar as QueryGrammar;
-use Illuminate\Database\Schema\Grammars\Grammar as SchemaGrammar;
+use Illuminate\Database\Schema\Grammars\SqlServerGrammar as SchemaGrammar;
 
 class ODBCDriverConnection extends SqlServerConnection
 {
@@ -25,7 +25,7 @@ class ODBCDriverConnection extends SqlServerConnection
 			}
 		}
 
-		return $this->withTablePrefix(new QueryGrammar); // TODO Cannot instantiate abstract class
+		return $this->withTablePrefix(new QueryGrammar);
 	}
 
 	/**
@@ -41,7 +41,7 @@ class ODBCDriverConnection extends SqlServerConnection
 			return $this->withTablePrefix(new $illuminateGrammar);
 		}
 
-		return $this->withTablePrefix(new SchemaGrammar); // TODO Cannot instantiate abstract class
+		return $this->withTablePrefix(new SchemaGrammar);
 	}
 
 	/**
