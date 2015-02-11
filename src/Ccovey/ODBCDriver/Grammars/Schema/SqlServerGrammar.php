@@ -1,4 +1,4 @@
-<?php namespace Ccovey\ODBCDriver\Schema\Grammars;
+<?php namespace Ccovey\ODBCDriver\Grammars\Schema;
 
 use Illuminate\Database\Schema\Grammars\SqlServerGrammar AS IlluminateSqlServerGrammar;
 use Illuminate\Support\Fluent;
