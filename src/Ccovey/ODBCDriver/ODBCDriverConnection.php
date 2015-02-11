@@ -14,7 +14,7 @@ class ODBCDriverConnection extends SqlServerConnection
 		$grammarConfig = $this->getGrammarConfig();
 
 		if ($grammarConfig) {
-			$packageGrammar = "Ccovey\\ODBCDriver\\Grammars\\" . $grammarConfig;
+			$packageGrammar = "Ccovey\\ODBCDriver\\Grammars\\Query\\" . $grammarConfig;
 			if (class_exists($packageGrammar)) {
 				return $this->withTablePrefix(new $packageGrammar);
 			}
